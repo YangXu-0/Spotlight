@@ -1,0 +1,28 @@
+TODO:
+- Write code for training and testing
+- Write code for evaluating model
+
+- All the stuff needed to create an app or smth that I will figure out later
+
+IN PROGRESS:
+- Write code for data processing
+    --> Figure out datasets/generators
+    --> Create data and figure out how to process it
+
+DONE:
+- Figure out model architecture
+
+Bugaboos:
+- Varying sample rates (upsampling/downsampling not great)
+- Time information
+    - Training sequentially
+    - Time information encaptured within the 20 millisecond frame lost with FFT
+        --> Maybe use a spectrogram if needed
+- Different amplitude audio
+    --> If I scale how do I scale back to reform the audio?
+        --> I guess I can create a shit ton of scaler objects and just save them to a list
+            but that is insanely inefficient
+        --> Going to just try logarithms for now, might come back to this later
+
+Notes:
+- Generally need 20 milliseconds to pronounce a phonetic
