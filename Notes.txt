@@ -26,3 +26,10 @@ Bugaboos:
 
 Notes:
 - Generally need 20 milliseconds to pronounce a phonetic
+
+Acrynoyms:
+- 'dev' - code used for development, not needed for use
+- 'hyp' - reference indicating where hyperparameters are
+
+Model version information:
+- Version 1 --> preliminary version created just from testing scripts

@@ -5,7 +5,7 @@ import torch.nn as nn
 
 class Model_1(nn.Module):
     def __init__(self, in_size, out_size):
-        super(Model_1, self).__init__()
+        super().__init__()
 
         # Layers
         self.stack = nn.Sequential(

@@ -47,7 +47,8 @@ audio_noisy, sr = librosa.load(audio_dir_noisy, sr=10000)
 #plot_magnitude_spectrum(audio_noisy, "Noisy Audio FFT", sr)
 
 # Split into groups of 20 milliseconds worth of samples
-num_samples = sr//50 # int num of samples in 20 milliseconds
+division_const = 100
+num_samples = sr//division_const # int num of samples in 20 milliseconds
 num_divisions = len(audio_clean)//num_samples
 
 audio_clean = audio_clean[:num_samples*num_divisions] # cut off leftovers
@@ -57,8 +58,8 @@ clean_samples = np.array(np.split(audio_clean, num_divisions))
 noisy_samples = np.array(np.split(audio_noisy, num_divisions))
 
 ########### Process the data (FFT, normalize, etc.) ###########
-clean_processed = np.zeros(shape=(num_divisions, 100))
-noisy_processed = np.zeros(shape=(num_divisions, 100))
+clean_processed = np.zeros(shape=(num_divisions, int((sr/division_const)//2)))
+noisy_processed = np.zeros(shape=(num_divisions, int((sr/division_const)//2)))
 
 for i in range(num_divisions):
     # Take data point
@@ -70,7 +71,7 @@ for i in range(num_divisions):
     noisy_point = np.abs(np.fft.fft(noisy_point))
 
     clean_point = clean_point[: len(clean_point)//2] # Cut in half to reduce data b/c FFT
-    noisy_point = noisy_point[: len(noisy_point)//2] # gives a lower and higher copy of freqs
+    noisy_point = noisy_point[: len(noisy_point)//2] # gives a lower and higher HZ copy of freqs
 
     """# Normalize
     scaler = preprocessing.StandardScaler()
