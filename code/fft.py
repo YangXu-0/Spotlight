@@ -1,10 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import os
 import librosa
-import IPython.display as ipd
 import scipy
 
+################ this is all pretty much just playing around with librosa and fft ################
 
 def plot_audio_time_series(series, title):
     plt.figure(figsize=(18,5))
